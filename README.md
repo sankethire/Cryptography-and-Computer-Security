@@ -1,2 +1,2 @@
-# Cryptography and Computer Security Assignments
+# Cryptography and Computer Security
 * Assignment 1 - Hill Cipher (Encryption, Decryption and Cryptanalysis)
