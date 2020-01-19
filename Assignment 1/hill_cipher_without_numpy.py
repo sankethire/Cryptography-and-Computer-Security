@@ -1,4 +1,5 @@
 import math
+import sys
 
 def make_square_matrix(k_array):
     n = int(math.sqrt(len(k_array)))
@@ -183,42 +184,80 @@ def decrypt(key_matrix, cipher_text):
     
     return decrypted_text
 
+def read_key_and_plaintext(input_file):
+    f = open(input_file, "r")
+    inputs = f.read().split("\n")
+    key, plain_text = make_square_matrix(inputs[0].split(" ")), inputs[1]
+    f.close()
+    return key,plain_text
 
-key = input().split(" ")
-key_matrix = make_square_matrix(key)
+def read_key_and_ciphertext(input_file):
+    f = open(input_file, "r")
+    inputs = f.read().split("\n")
+    key, cipher_text = make_square_matrix(inputs[0].split(" ")), inputs[1]
+    f.close()
+    return key,cipher_text
 
-plain_text = "speaking of dreams in a figurative sense then slowly talking about its impact in the literal sense the \
-writer keeps stressing on one very important point that dreams have an important role to play in \
-american politics after all a liberal society is formed on the basis of ones imagination these imaginations \
-are a result of ones free thoughts which can be related to dreams as dreaming provides a picture of the \
-real world uncovering things which otherwise might not have been pondered upon due to narrowed and \
-limited freedom of imagining it may seem reckless to consider the possibility of turning to dreams to \
-work through the political conditions today but ignoring them altogether might even be more reckless \
-says the author"
+if __name__ == "__main__":
+    key_matrix, plain_text = read_key_and_plaintext(sys.argv[1])
+    key_matrix, cipher_text = read_key_and_ciphertext(sys.argv[2])
+    encrypted_text = encrypt(key_matrix, plain_text)
+    decrypted_text = decrypt(key_matrix, cipher_text)
 
-# plain_text = "help"
+    print("\nPlain Text: \n")
+    print(plain_text)
+    print("\n-------------------------------------------------\n")
 
-print("\nPlain Text: \n")
-print(plain_text)
-print("\n-------------------------------------------------\n")
+    print("\nEncrypted Text: \n")
+    print(encrypted_text)
+    print("\n-------------------------------------------------\n")
 
-encrypted_text = encrypt(key_matrix, plain_text)
-print("\nEncrypted Text: \n")
-print(encrypted_text)
-print("\n-------------------------------------------------\n")
+    print("\nCipher Text: \n")
+    print(cipher_text)
+    print("\n-------------------------------------------------\n")
 
-cipher_text = "zskkkisx la nzkkgi hu p emexwfkfqm oxkse xfxk nukycj cpmdhuc cmpdi zee cxqgma lf xkj gronkxk zxkse xfy mitono fwiuj lqwvikhus iq tml gfel eoilphnav busfx xffk nzkkgi ylgf na eoilphnab ndkp up iivg ea nqcitsst zdkzeagg gldji hoi v grihkxk zcigswd wy wzurtc jw xfn qcewy la jwmo eoskhufkkaf xkjse \
-eoskhufkkacr zyk k wvownf la jwmo frwi xfemxset lgage xna ih wvivont lf owvkug gp ywvkuhuv oadsdazg g qbxcxwa ql dkj wvho gwrlw rgzhsjihuh mwhsxu iwhni bgkjyzwyu emedv qtx flwn qwit zjwazwvw rilj fkw sv anjvkytc nav peozetc frwiehu ke peeayyjsx ze eek mwid cqwtamol qc ijwecazp hkj ilikxabizey ol dxwyjsx sv nzkkgi sv gwof xfadqid vkj ilgralsso hjwmxaljwl qfouo eza lpcvuhuh mkje enfogpukju rmedv vgxk ih ukwv wvwautik ggkm xfk kdiorhr"
+    print("\nDecrypted Text: \n")
+    print(decrypted_text)
+    print("\n-------------------------------------------------\n")
 
-# cipher_text = "hiat"
-
-print("\nCipher Text: \n")
-print(cipher_text)
-print("\n-------------------------------------------------\n")
+    print(plain_text == decrypted_text[:-1])
+    print(cipher_text == encrypted_text)
 
 
-decrypted_text = decrypt(key_matrix, cipher_text)
-print("\nDecrypted Text: \n")
-print(decrypted_text)
-print("\n-------------------------------------------------\n")
+# key = input().split(" ")
+# key_matrix = make_square_matrix(key)
 
+# plain_text = "speaking of dreams in a figurative sense then slowly talking about its impact in the literal sense the \
+# writer keeps stressing on one very important point that dreams have an important role to play in \
+# american politics after all a liberal society is formed on the basis of ones imagination these imaginations \
+# are a result of ones free thoughts which can be related to dreams as dreaming provides a picture of the \
+# real world uncovering things which otherwise might not have been pondered upon due to narrowed and \
+# limited freedom of imagining it may seem reckless to consider the possibility of turning to dreams to \
+# work through the political conditions today but ignoring them altogether might even be more reckless \
+# says the author"
+
+# # plain_text = "help"
+
+# print("\nPlain Text: \n")
+# print(plain_text)
+# print("\n-------------------------------------------------\n")
+
+# encrypted_text = encrypt(key_matrix, plain_text)
+# print("\nEncrypted Text: \n")
+# print(encrypted_text)
+# print("\n-------------------------------------------------\n")
+
+# cipher_text = "zskkkisx la nzkkgi hu p emexwfkfqm oxkse xfxk nukycj cpmdhuc cmpdi zee cxqgma lf xkj gronkxk zxkse xfy mitono fwiuj lqwvikhus iq tml gfel eoilphnav busfx xffk nzkkgi ylgf na eoilphnab ndkp up iivg ea nqcitsst zdkzeagg gldji hoi v grihkxk zcigswd wy wzurtc jw xfn qcewy la jwmo eoskhufkkaf xkjse \
+# eoskhufkkacr zyk k wvownf la jwmo frwi xfemxset lgage xna ih wvivont lf owvkug gp ywvkuhuv oadsdazg g qbxcxwa ql dkj wvho gwrlw rgzhsjihuh mwhsxu iwhni bgkjyzwyu emedv qtx flwn qwit zjwazwvw rilj fkw sv anjvkytc nav peozetc frwiehu ke peeayyjsx ze eek mwid cqwtamol qc ijwecazp hkj ilikxabizey ol dxwyjsx sv nzkkgi sv gwof xfadqid vkj ilgralsso hjwmxaljwl qfouo eza lpcvuhuh mkje enfogpukju rmedv vgxk ih ukwv wvwautik ggkm xfk kdiorhr"
+
+# # cipher_text = "hiat"
+
+# print("\nCipher Text: \n")
+# print(cipher_text)
+# print("\n-------------------------------------------------\n")
+
+
+# decrypted_text = decrypt(key_matrix, cipher_text)
+# print("\nDecrypted Text: \n")
+# print(decrypted_text)
+# print("\n-------------------------------------------------\n")
