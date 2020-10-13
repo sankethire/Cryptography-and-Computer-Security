@@ -1,4 +1,4 @@
-# PlayfairCrack
+# PlayfairCrack [Implemented by: N8Stewart/PlayfairCrack]
 Program to crack a Playfair cipher using Simulated Annealing
 
 ## Project Explanation
