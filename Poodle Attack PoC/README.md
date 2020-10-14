@@ -1,4 +1,4 @@
-# Vulnerability in Standard Cryptographic Algorithms
+# Vulnerability in Standard Cryptographic Protocols
 
 ## SSL v3.0 Vulnerability: POODLE Attack
 
